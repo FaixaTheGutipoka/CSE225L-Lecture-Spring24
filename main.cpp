@@ -1,77 +1,34 @@
 #include <iostream>
+#include "dynarr.h"
+//if gives error try using '.cpp'
+//in case we are using '.cpp' initially and it still gives error, try '.h' instead
 
 using namespace std;
 
 int main()
 {
-//Task-1
-/*
-   int size;
-   cout<<"Enter array size: ";
-   cin>>size;
-   int *array = new int[size];
-
-   cout<<"Enter array elements: "<<endl;
-   for(int i = 0;i<size;i++){
-    cin>>array[i];
-   }
-   cout<<"Print array elements: "<<endl;
-   for(int i=0;i<size;i++){
-   cout<<array[i]<<" "<<endl;
-   }
-    delete[]array;
-*/
-//Task-2
-/*
-    int rows,columns;
-    cout<<"Enter the row size: ";
-    cin>>rows;
-    cout<<"Enter the column size: ";
-    cin>>columns;
-    char **CharArray = new char*[rows];
-    for(int i=0;i<rows;i++){
-        CharArray[i]=new char[columns];
+    //Task 1
+    int v1, p1, v2, p2, s1;
+    dynArr a1;
+    dynArr a2(5);
+    for(int i=0; i<5; i++){
+        cin>>v2;
+        a2.setValue(i,v2);
     }
-    for(int i= 0;i<rows;i++){
-        for(int j=0;j<columns;j++){
-            cin>>CharArray[i][j];
-        }
-    }
-    for(int i= 0;i<rows;i++){
-            cout<<"\n";
-        for(int j=0;j<columns;j++){
-            cout<<CharArray[i][j]<<" ";
-        }
-    }
-    for(int i=0;i<rows;i++){
-        delete CharArray[i];
-    }
-    delete []CharArray;
-
-  */
-//Task-3
-int rows,columns;
-int go=0;
-    cout<<"Enter the row size: ";
-    cin>>rows;
-    int **snickers= new int*[row];
-    int *lays = new int[row];
-
-    for(int i=0;i<rows;i++){
-        cout<<"Enter column number now: "<<i+1;
-        cin>>lays[i];
-        snickers[i]=new int[lays[i]];
-    }
-    for(int i;i<rows;i++){
-        go=lays[i];
-        for(int j=0;j<go;j++){
-            cin>>
-        }
+    for(int i=0; i<5; i++){
+        p2=a2.getValue(i);
+        cout<<p2<<" ";
     }
 
-
-
-
-
-     return 0;
+    //Task 2
+    cin>>s1;
+    a1.allocate(s1);
+    for(int i=0; i<s1; i++){
+        cin>>v1;
+        a1.setValue(i,v1);
+    }
+    for(int i=0; i<s1; i++){
+        cout<<a1.getValue(i)<<" ";
+    }
+    return 0;
 }
