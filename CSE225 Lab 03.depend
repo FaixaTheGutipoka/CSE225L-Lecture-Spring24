@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1709079688 source:c:\users\lib 609\desktop\cse225 lab\cse225 lab 03\complex.cpp
+	"complex.h"
+	<iostream>
+	<math.h>
+
+1709079688 c:\users\lib 609\desktop\cse225 lab\cse225 lab 03\complex.h
+
+1709078228 source:c:\users\lib 609\desktop\cse225 lab\cse225 lab 03\main.cpp
+	<iostream>
+	"complex.h"
+
