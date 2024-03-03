@@ -1,28 +1,38 @@
 #include <iostream>
-#include "complex.h"
+#include "dynArr.cpp"
 
 using namespace std;
 
 int main()
 {
-    Complex obj1(1, 2);
-    Complex obj2(1, -2);
-    Complex sum, prod, div;
+    dynArr<int> obj1(5);
+    dynArr<char> obj2(5);
 
-    sum=obj1.operator+(obj2);
-    prod=obj1.operator*(obj2);
-    div=obj1.operator/(obj2);
+    int a;
+    char b;
 
-    sum.Print();
+    for(int i=0; i<5; i++){
+        cin>>a;
+        obj1.setValue(i, a);
+    }
+
     cout<<'\n';
 
-    prod.Print();
+    for(int i=0; i<5; i++){
+        cout<<obj1.getValue(i)<<" ";
+    }
+
     cout<<'\n';
 
-    div.Print();
+    for(int i=0; i<5; i++){
+        cin>>b;
+        obj2.setValue(i, b);
+    }
+
     cout<<'\n';
 
-    cout<<obj1.operator!=(obj2);
-
+    for(int i=0; i<5; i++){
+        cout<<obj2.getValue(i)<<" ";
+    }
     return 0;
 }

@@ -1,36 +1,21 @@
 #include "dynarr.h"
 #include <iostream>
 using namespace std;
-dynArr::dynArr()
+
+template <typename T> dynArr<T>::dynArr(int s)
 {
-    //constructor without argument
-    data = NULL; //pointer doesn't hold any value rather address
-    size = 0;
+    data = new T[s];
+    size = s;
 }
-dynArr::dynArr(int s)
+template <typename T> dynArr<T>::~dynArr()
 {
-    //constructor with argument
-    data = new int[s];
-    size = s; //variable which stores the value of size.
-    //'size' is not a key word
-}
-dynArr::~dynArr()
-{
-    //destructor
     delete [] data;
 }
-int dynArr::getValue(int index)
+template <typename T> T dynArr<T>::getValue(int index)
 {
-    //Getter
     return data[index];
 }
-void dynArr::setValue(int index, int value)
+template <typename T> void dynArr<T>::setValue(int index, T value)
 {
-    //Setter
     data[index] = value;
-}
-
-void dynArr::allocate(int a){
-    delete [] data;
-    data = new int[a];
 }
