@@ -1,38 +1,27 @@
 #include <iostream>
-#include "dynArr.cpp"
+#include "sortedtype.cpp"
 
 using namespace std;
+template <class T> void Print(SortedType<T> u){
+    int len = u.LengthIs();
+    T v;
+    for(int i=0; i<len; i++){
+
+    }
+}
 
 int main()
 {
-    dynArr<int> obj1(5);
-    dynArr<char> obj2(5);
+    SortedType<int> obj1;
+    obj1.MakeEmpty();
 
-    int a;
-    char b;
+    cout<<obj1.LengthIs()<<'\n';
 
-    for(int i=0; i<5; i++){
-        cin>>a;
-        obj1.setValue(i, a);
-    }
+    obj1.InsertItem(5);
+    obj1.InsertItem(7);
+    obj1.InsertItem(4);
+    obj1.InsertItem(2);
+    obj1.InsertItem(1);
 
-    cout<<'\n';
-
-    for(int i=0; i<5; i++){
-        cout<<obj1.getValue(i)<<" ";
-    }
-
-    cout<<'\n';
-
-    for(int i=0; i<5; i++){
-        cin>>b;
-        obj2.setValue(i, b);
-    }
-
-    cout<<'\n';
-
-    for(int i=0; i<5; i++){
-        cout<<obj2.getValue(i)<<" ";
-    }
-    return 0;
+    Print(obj1);
 }
