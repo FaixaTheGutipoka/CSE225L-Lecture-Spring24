@@ -40,6 +40,16 @@ template <class T> void Print(SortedType<T> u){
         cout<<v<<" ";
     }
 }
+template <class timeStamp> void PrintTime(SortedType<timeStamp> u){
+    int len = u.LengthIs();
+    timeStamp t(0, 0, 0);
+    for(int i=0; i<len; i++){
+        u.GetNextItem(t);
+        cout<<t.hours<<":";
+        cout<<t.minutes<<":";
+        cout<<t.seconds<<'\n';
+    }
+}
 template <class T> void Retrive(SortedType<T> u, T v){
     bool a;
     u.RetrieveItem(v, a);
@@ -59,6 +69,7 @@ template <class T> void Full(SortedType<T> u){
 
 int main()
 {
+    //Task 1
     SortedType<int> obj1;
     obj1.MakeEmpty();
 
@@ -91,9 +102,10 @@ int main()
     cout<<'\n';
 
 
+    cout<<'\n';
 
 
-
+    //Task 2
     SortedType<timeStamp> t;
     timeStamp t1(15, 34, 23);
     timeStamp t2(13, 13, 02);
@@ -109,11 +121,5 @@ int main()
 
     t.DeleteItem(t4);
 
-    /*
-    for(int i=0; i<4; i++){
-        timeStamp t23;
-        t[i].GetNextItem(t23);
-        cout<<t23;
-    }
-    */
+    PrintTime(t);
 }
