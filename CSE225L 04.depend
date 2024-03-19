@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1710834043 source:c:\users\user\onedrive\desktop\spring2024 (3rd semester)\cse225 ahbb\lab\labs & hws\cse225l 04\unsortedtype.cpp
+	"UnsortedType.h"
+
+1709638810 c:\users\user\onedrive\desktop\spring2024 (3rd semester)\cse225 ahbb\lab\labs & hws\cse225l 04\unsortedtype.h
+
+1710833951 source:c:\users\user\onedrive\desktop\spring2024 (3rd semester)\cse225 ahbb\lab\labs & hws\cse225l 04\main.cpp
+	<iostream>
+	"unsortedtype.cpp"
+	<string.h>
+
+1710834043 c:\users\user\onedrive\desktop\spring2024 (3rd semester)\cse225 ahbb\lab\labs & hws\cse225l 04\unsortedtype.cpp
+	"UnsortedType.h"
+
