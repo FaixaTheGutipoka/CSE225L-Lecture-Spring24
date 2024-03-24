@@ -22,7 +22,7 @@ template <class T> UnsortedType<int> merge_array(UnsortedType<T> u, UnsortedType
             if(len2>0)
                 v.GetNextItem(v2);
         }else if(v1==v2){
-            merged.InsertItem(v1); //Ami to ekhane ekbar likhsi, then barbar keno print dicche?
+            merged.InsertItem(v1);
             len1--;
             len2--;
             if(len1>0)
