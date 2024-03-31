@@ -1,0 +1,78 @@
+#include <iostream>
+#include "sortedtype.h"
+#include "sortedtype.cpp"
+
+using namespace std;
+
+class timeStamp{
+public:
+    int hours, minutes, seconds;
+    timeStamp(){
+
+    }
+    timeStamp(int h, int m, int s){
+        hours = h;
+        minutes = m;
+        seconds = s;
+    }
+    bool operator == (const timeStamp &t){
+        return (hours==t.hours&&minutes==t.minutes&&seconds==t.seconds);
+    }
+    bool operator != (const timeStamp &t){
+        return (hours!=t.hours||minutes!=t.minutes||seconds!=t.seconds);
+    }
+    bool operator > (const timeStamp &t){
+        int a = t.hours*3600+t.minutes*60+t.seconds;
+        int b = hours*3600+minutes*60+seconds;
+        return b>a;
+    }
+    bool operator < (const timeStamp &t){
+        int a = t.hours*3600+t.minutes*60+t.seconds;
+        int b = hours*3600+minutes*60+seconds;
+        return b<a;
+    }
+};
+
+string Formate(int a){
+    std::string b = std::to_string(a);
+    if (a<10)
+        return "0"+b;
+    else
+        return b;
+}
+
+template <class timeStamp> void PrintTime(SortedType<timeStamp> u){
+    int len = u.LengthIs();
+    timeStamp t(0, 0, 0);
+    for(int i=0; i<len; i++){
+        u.GetNextItem(t);
+
+        //Option 3: (most preferred by bhaiyya)
+        string h, m, s;
+        h=Formate(t.hours);
+        m=Formate(t.minutes);
+        s=Formate(t.seconds);
+
+        cout<<h<<":"<<m<<":"<<s;
+        cout<<'\n';
+    }
+}
+
+int main()
+{
+    SortedType<timeStamp> t;
+    timeStamp t1(15, 34, 23), t2(13, 13, 02), t3(43, 45, 12), t4(25, 36, 17), t5(52, 02, 20);
+
+    t.InsertItem(t1);
+    t.InsertItem(t2);
+    t.InsertItem(t3);
+    t.InsertItem(t4);
+    t.InsertItem(t5);
+
+    timeStamp temp(25, 36, 17);
+
+    t.DeleteItem(temp);
+
+    PrintTime(t);
+    return 0;
+}
