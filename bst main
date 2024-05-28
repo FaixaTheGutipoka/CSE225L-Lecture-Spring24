@@ -1,0 +1,415 @@
+#include <iostream>
+#include "binarysearchtree.cpp"
+
+using namespace std;
+
+void Empty(TreeType<int>& u){
+    if(u.IsEmpty())
+        cout << "Tree is empty." << '\n';
+    else
+        cout << "Tree is not empty." << '\n';
+}
+
+void found(TreeType<int>& u, int n){
+    bool v;
+    u.RetrieveItem(n, v);
+    if(v)
+        cout << "Item found" << '\n';
+    else
+        cout << "Item not found" << '\n';
+}
+void Recursive(TreeType<int>& u, int a[], int x, int y){
+    int m = (x+y)/2;
+    u.InsertItem(a[m]);
+
+    if(x==y)
+        return;
+    else if(x<y)
+        Recursive(u, a, x, m-1);
+    else
+        Recursive(u, a, m+1, y);
+}
+
+/*void recursivelyInsert(TreeType<int> &fintree, int arr[],int start, int endd )
+{
+    int mid= (start+endd)/2;
+    fintree.InsertItem(arr[mid]);
+    if(start==endd)
+        return;
+
+    if(start<mid)
+        recursivelyInsert(fintree,arr,start,mid-1);
+
+
+    recursivelyInsert(fintree,arr,mid+1,endd);
+}*/
+
+int main()
+{
+    ///*
+    //Task 1:
+
+    TreeType<int> obj1;
+    Empty(obj1);
+
+    //4  9  2  7  3  11  17  0  5  1
+    obj1.InsertItem(4);
+    obj1.InsertItem(9);
+    obj1.InsertItem(2);
+    obj1.InsertItem(7);
+    obj1.InsertItem(3);
+    obj1.InsertItem(11);
+    obj1.InsertItem(17);
+    obj1.InsertItem(0);
+    obj1.InsertItem(5);
+    obj1.InsertItem(1);
+
+    Empty(obj1);
+
+    int a = obj1.LengthIs();
+    cout << a;
+
+    found(obj1, 9);
+    found(obj1, 13);
+
+    obj1.ResetTree(IN_ORDER);
+    bool x = false;
+    while(!x){
+        int y;
+        obj1.GetNextItem(y, IN_ORDER, x);
+        cout << y << " ";
+    }
+    cout << '\n';
+
+    obj1.ResetTree(PRE_ORDER);
+    x = false;
+    while(!x){
+        int y;
+        obj1.GetNextItem(y, PRE_ORDER, x);
+        cout << y << " ";
+    }
+    cout << '\n';
+
+    obj1.ResetTree(POST_ORDER);
+    x = false;
+    while(!x){
+        int y;
+        obj1.GetNextItem(y, POST_ORDER, x);
+        cout << y << " ";
+    }
+    cout << '\n';
+
+    obj1.MakeEmpty();
+    //
+
+    //Task 2:
+    TreeType<int> obj2, obj3;
+    int z[] = {11, 9, 4, 2, 7, 3, 17, 0, 5, 1};
+    int arr[10];
+    for(int i=0; i<10; i++){
+        obj2.InsertItem(z[i]);
+    }
+
+    obj2.ResetTree(IN_ORDER);
+    x = false;
+    int i=0;
+    while(!x){
+        int y;
+        obj2.GetNextItem(y, IN_ORDER, x);
+        arr[i++] = y;
+    }
+
+    Recursive(obj3, arr, 0, i-1);
+
+    obj3.ResetTree(PRE_ORDER);
+    x = false;
+    while(!x){
+        int y;
+        obj3.GetNextItem(y, PRE_ORDER, x);
+        cout << y << " ";
+    }
+    cout << '\n';
+
+
+    return 0;
+}
+
+/*
+#include <iostream>
+#include "binarysearchtree.cpp"
+
+using namespace std;
+
+void recursivelyInsert(TreeType<int> &fintree, int arr[],int start, int endd )
+{
+    int mid= (start+endd)/2;
+    fintree.InsertItem(arr[mid]);
+    if(start==endd)
+        return;
+
+    if(start<mid)
+        recursivelyInsert(fintree,arr,start,mid-1);
+
+
+    recursivelyInsert(fintree,arr,mid+1,endd);
+}
+
+
+///*
+void recursiveInsert(TreeType<int> &finTree,int arr[],int start,int end )
+{
+
+    int mid= (start+end)/2;
+    finTree.InsertItem(arr[mid]);
+    if(start==end)
+        return;
+    if(start<mid)
+        recursiveInsert(finTree,arr,start,mid-1);//duita recursion e aksathe choltese// left e save
+
+    recursiveInsert(finTree,arr,mid+1,end);//etao chole ager tar sathe , if else na , eta cholbe // right
+
+
+}
+//
+void emptycheck(bool b)
+{
+    if(b==true)
+    {
+        cout<<"Tree is EMPTY"<<endl<<endl;
+    }
+    else
+    {
+        cout<<"Tree is not EMPTY"<<endl<<endl;
+    }
+}
+
+
+int main()
+{
+
+    TreeType<int> tree;
+    emptycheck(tree.IsEmpty());
+
+    tree.InsertItem(4);
+    tree.InsertItem(9);
+    tree.InsertItem(2);
+    tree.InsertItem(7);
+    tree.InsertItem(3);
+    tree.InsertItem(11);
+    tree.InsertItem(17);
+    tree.InsertItem(0);
+    tree.InsertItem(5);
+    tree.InsertItem(1);
+
+    emptycheck(tree.IsEmpty());
+
+    cout<<tree.LengthIs()<<endl<<endl;
+
+    int item=9;
+    bool found;
+
+    tree.RetrieveItem(item,found);
+
+    if(found==true)
+    {
+        cout<<"Item found"<<endl<<endl;
+    }
+    else
+        cout<<"Item Not Found"<<endl<<endl;
+
+
+    item = 13;
+
+    tree.RetrieveItem(item,found);
+
+    if(found==true)
+    {
+        cout<<"Item found"<<endl<<endl;
+    }
+    else
+        cout<<"Item Not Found"<<endl<<endl;
+
+
+    tree.ResetTree(IN_ORDER);
+    int item2;
+    bool finished =false;
+    while(!finished)
+    {
+        tree.GetNextItem(item2,IN_ORDER,finished);
+        cout<<item2<<" ";
+
+    }
+    cout<<endl;
+
+
+
+
+
+
+
+
+    //Enum used Ordertype e different order er naam diye alada alada kaaj
+
+    /*tree.ResetTree(IN_ORDER);
+
+    bool finished= false;
+
+    while(!finished)
+    {
+        int item2;
+        tree.GetNextItem(item2,IN_ORDER,finished);
+
+        cout<<item2<<" ";
+    }
+
+    cout<<endl<<endl;
+
+    //
+    //PRE order
+    tree.ResetTree(PRE_ORDER);
+
+    finished= false;
+
+    while(!finished)
+    {
+        int item2;
+        tree.GetNextItem(item2,PRE_ORDER,finished);
+
+        cout<<item2<<" ";
+    }
+
+    cout<<endl<<endl;
+
+    //Postorder
+
+    tree.ResetTree(POST_ORDER);
+
+    finished= false;
+
+    while(!finished)
+    {
+        int item2;
+        tree.GetNextItem(item2,POST_ORDER,finished);
+
+        cout<<item2<<" ";
+    }
+
+    cout<<endl<<endl;
+
+
+
+
+    tree.MakeEmpty();
+
+
+
+    ////Task 2 starts
+    /*Given a sequence of integers, determine the best ordering of
+    the integers to insert them into a binary search tree. The best
+    order is the one that will allow the binary search tree to have
+    the minimum height.//
+
+    TreeType<int> ordtree;
+
+    int arr[]= {11, 9, 4, 2, 7, 3, 17, 0, 5, 1};
+
+    int num =10;
+    for(int i=0; i<num; i++)
+    {
+        ordtree.InsertItem(arr[i]);
+    }
+
+    int temp, arr2[20], i=0;
+    ordtree.ResetTree(IN_ORDER);
+    finished= false;
+
+    while(!finished)
+    {
+        ordtree.GetNextItem(temp,IN_ORDER,finished);
+        arr2[i++]=temp;
+
+    }
+
+    TreeType<int> finTree;
+
+    recursivelyInsert(finTree,arr2,0,i-1);
+
+
+    finTree.ResetTree(PRE_ORDER);
+
+    finished= false;
+
+    while(!finished)
+    {
+        int item4;
+        finTree.GetNextItem(item4,PRE_ORDER,finished);
+
+        cout<<item4<<" ";
+    }
+
+    cout<<endl<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+        TreeType<int> ordTree;
+        int arr[]= {11, 9, 4, 2, 7, 3, 17, 0, 5, 1};
+
+
+        int num=10;
+        for(int i =0; i<num; i++)
+        {
+            ordTree.InsertItem(arr[i]);
+        }
+
+        int index=0,arr2[20];
+
+        ordTree.ResetTree(IN_ORDER);
+
+        finished= false;
+
+        while(!finished)
+        {
+            int item3;
+            ordTree.GetNextItem(item3,IN_ORDER,finished);
+            arr2[index++]=item3;
+
+        }
+
+        TreeType<int>finTree;
+
+
+    recursiveInsert(finTree,arr2,0,index-1);
+
+
+    cout<<endl;
+
+     finTree.ResetTree(PRE_ORDER);
+
+        finished= false;
+
+        while(!finished)
+        {
+            int item4;
+            finTree.GetNextItem(item4,PRE_ORDER,finished);
+
+            cout<<item4<<" ";
+        }
+
+        cout<<endl<<endl;
+
+
+
+    return 0;
+}
+*/
